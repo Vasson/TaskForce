@@ -46,14 +46,14 @@ export default {
             this.tasks = data.data
         },
         getRecord(id){
-            axios.get('http://www.localtodo.com/tasks/'+id+'/edit')
+            axios.get(config.APP_URL+'/tasks/'+id+'/edit')
             .then(response => this.editRec = response.data)
             .catch(error => this.response.errors)
         },
         deleteRecord(id){
             const reply = confirm("Are you sure you want to delete record?");
             if(reply){
-                axios.post('http://www.localtodo.com/tasks/'+id,{
+                axios.post(config.APP_URL+'/tasks/'+id,{
                     id:id,
                     _method:'DELETE'
                 })
@@ -66,7 +66,7 @@ export default {
         }
     },
     mounted() {
-            axios.get('http://www.localtodo.com/tasks')
+            axios.get(config.APP_URL+'/tasks')
             .then((response) => this.tasks = response.data)
             .catch((error) => console.log(error));
         }

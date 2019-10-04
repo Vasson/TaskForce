@@ -44,7 +44,7 @@ export default {
     },
     methods:{
         addTask(){
-            axios.post("http://www.localtodo.com/tasks",{
+            axios.post(config.APP_URL+"/tasks",{
                     'title':this.title,
                     'description':this.description,
             })
