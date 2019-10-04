@@ -1907,7 +1907,7 @@ __webpack_require__.r(__webpack_exports__);
     addTask: function addTask() {
       var _this = this;
 
-      axios.post("http://www.localtodo.com/tasks", {
+      axios.post(config.APP_URL + "/tasks", {
         'title': this.title,
         'description': this.description
       }).then(function (data) {
@@ -1989,7 +1989,7 @@ __webpack_require__.r(__webpack_exports__);
     updateTask: function updateTask() {
       var _this = this;
 
-      axios.post("http://www.localtodo.com/tasks/" + this.task.id, {
+      axios.post(config.APP_URL + "/tasks/" + this.task.id, {
         'title': this.task.title,
         'description': this.task.description,
         'status': this.task.status,
@@ -2100,7 +2100,7 @@ __webpack_require__.r(__webpack_exports__);
     getRecord: function getRecord(id) {
       var _this = this;
 
-      axios.get('http://www.localtodo.com/tasks/' + id + '/edit').then(function (response) {
+      axios.get(config.APP_URL + '/tasks/' + id + '/edit').then(function (response) {
         return _this.editRec = response.data;
       })["catch"](function (error) {
         return _this.response.errors;
@@ -2112,7 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
       var reply = confirm("Are you sure you want to delete record?");
 
       if (reply) {
-        axios.post('http://www.localtodo.com/tasks/' + id, {
+        axios.post(config.APP_URL + '/tasks/' + id, {
           id: id,
           _method: 'DELETE'
         }).then(function (response) {
@@ -2128,7 +2128,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this3 = this;
 
-    axios.get('http://www.localtodo.com/tasks').then(function (response) {
+    axios.get(config.APP_URL + '/tasks').then(function (response) {
       return _this3.tasks = response.data;
     })["catch"](function (error) {
       return console.log(error);

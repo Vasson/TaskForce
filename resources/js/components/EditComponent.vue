@@ -52,7 +52,7 @@ export default {
     },
     methods:{
         updateTask(){
-            axios.post("http://www.localtodo.com/tasks/"+this.task.id,{
+            axios.post(config.APP_URL+"/tasks/"+this.task.id,{
                 'title':this.task.title,
                 'description':this.task.description,
                 'status':this.task.status,
