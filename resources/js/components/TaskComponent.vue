@@ -38,7 +38,8 @@ export default {
     data(){
             return{
                 tasks:{},
-                editRec:{}
+                editRec:{},
+                baseURL: process.env.MIX_BASE_URL
             }
         },
     methods:{
@@ -46,14 +47,14 @@ export default {
             this.tasks = data.data
         },
         getRecord(id){
-            axios.get(config.APP_URL+'/tasks/'+id+'/edit')
+            axios.get(this.baseURL+'tasks/'+id+'/edit')
             .then(response => this.editRec = response.data)
             .catch(error => this.response.errors)
         },
         deleteRecord(id){
             const reply = confirm("Are you sure you want to delete record?");
             if(reply){
-                axios.post(config.APP_URL+'/tasks/'+id,{
+                axios.post(this.baseURL+'tasks/'+id,{
                     id:id,
                     _method:'DELETE'
                 })
@@ -66,7 +67,7 @@ export default {
         }
     },
     mounted() {
-            axios.get(config.APP_URL+'/tasks')
+            axios.get(this.baseURL+'tasks')
             .then((response) => this.tasks = response.data)
             .catch((error) => console.log(error));
         }

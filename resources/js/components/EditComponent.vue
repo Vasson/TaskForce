@@ -48,11 +48,12 @@ export default {
             error:[],
             title: '',
             description: '',
+            baseURL: process.env.MIX_BASE_URL
         }
     },
     methods:{
         updateTask(){
-            axios.post(config.APP_URL+"/tasks/"+this.task.id,{
+            axios.post(this.baseURL+"tasks/"+this.task.id,{
                 'title':this.task.title,
                 'description':this.task.description,
                 'status':this.task.status,

@@ -40,11 +40,13 @@ export default {
             description: '',
             success:'',
             error:[],
+            baseURL: process.env.MIX_BASE_URL
         }
     },
     methods:{
         addTask(){
-            axios.post(config.APP_URL+"/tasks",{
+            
+            axios.post(this.baseURL+"tasks",{
                     'title':this.title,
                     'description':this.description,
             })

@@ -1900,14 +1900,15 @@ __webpack_require__.r(__webpack_exports__);
       title: '',
       description: '',
       success: '',
-      error: []
+      error: [],
+      baseURL: "http://www.localtodo.com/"
     };
   },
   methods: {
     addTask: function addTask() {
       var _this = this;
 
-      axios.post(config.APP_URL + "/tasks", {
+      axios.post(this.baseURL + "tasks", {
         'title': this.title,
         'description': this.description
       }).then(function (data) {
@@ -1982,14 +1983,15 @@ __webpack_require__.r(__webpack_exports__);
       success: '',
       error: [],
       title: '',
-      description: ''
+      description: '',
+      baseURL: "http://www.localtodo.com/"
     };
   },
   methods: {
     updateTask: function updateTask() {
       var _this = this;
 
-      axios.post(config.APP_URL + "/tasks/" + this.task.id, {
+      axios.post(this.baseURL + "tasks/" + this.task.id, {
         'title': this.task.title,
         'description': this.task.description,
         'status': this.task.status,
@@ -2090,7 +2092,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       tasks: {},
-      editRec: {}
+      editRec: {},
+      baseURL: "http://www.localtodo.com/"
     };
   },
   methods: {
@@ -2100,7 +2103,7 @@ __webpack_require__.r(__webpack_exports__);
     getRecord: function getRecord(id) {
       var _this = this;
 
-      axios.get(config.APP_URL + '/tasks/' + id + '/edit').then(function (response) {
+      axios.get(this.baseURL + 'tasks/' + id + '/edit').then(function (response) {
         return _this.editRec = response.data;
       })["catch"](function (error) {
         return _this.response.errors;
@@ -2112,7 +2115,7 @@ __webpack_require__.r(__webpack_exports__);
       var reply = confirm("Are you sure you want to delete record?");
 
       if (reply) {
-        axios.post(config.APP_URL + '/tasks/' + id, {
+        axios.post(this.baseURL + 'tasks/' + id, {
           id: id,
           _method: 'DELETE'
         }).then(function (response) {
@@ -2128,7 +2131,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this3 = this;
 
-    axios.get(config.APP_URL + '/tasks').then(function (response) {
+    axios.get(this.baseURL + 'tasks').then(function (response) {
       return _this3.tasks = response.data;
     })["catch"](function (error) {
       return console.log(error);
