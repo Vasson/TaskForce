@@ -16,8 +16,7 @@ js package manager -  yarn
 4. create virtual host www.[yourhostname].com
 5. configure the APP_URL = www.[yourhostname].com in .env file
 6. set MIX_BASE_URL = www.[yourhostname].com/ in .env file
-7. run above url in broswer and click on generate key
-8. create db as laravel
-9. run command for db migration - php artisan migrate
+7. create db as laravel
+8. run command for db migration - php artisan migrate
 
 
